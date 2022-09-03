@@ -40,6 +40,41 @@ module.exports.updateAUser = async (req,res)=>{
     res.send(users);
 }
 
+module.exports.updateTwoUser = async (req,res) =>{
+    // all I got from the requset
+    const info = req.body;
+    const userId1 = req.query.userId;
+    const userId2 = req.query.userId2;
+    
+    // finding the user and it's index number
+    const user1 = users.find(user=> user.id == userId1); 
+    const user1Index = users.indexOf(user1);
+    
+    const user2 = users.find(user=> user.id == userId2);
+    const user2Index = users.indexOf(user2);
+    
+    // updating the users with the info
+    const updatedUser1 = {...user1,...info}; 
+    const updatedUser2 = {...user2,...info};
+    
+    // condition to update user to the DB
+    if(user1Index > -1 && user2Index > -1){
+        users[user1Index] = updatedUser1;
+        users[user2Index] = updatedUser2;
+    }else if(user1Index > -1){
+        users[user1Index] = updatedUser1;
+    }
+    else if(user2Index > -1){
+        users[user2Index] = updatedUser2;
+    }
+    else{
+        console.log('something went wrong');
+    }
+
+    //returing the main DB 
+    res.send(users)
+}
+
 module.exports.deleteAUser = async (req,res) =>{
     const id = req.params.id;
     const deletedUser = users.find(user=> user.id == Number(id));
