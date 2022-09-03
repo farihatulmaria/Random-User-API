@@ -5,7 +5,6 @@ const router = express.Router();
 router
     .route('/all')
         .get(UsersController.getAllUsers)
-
 router
     .route('/random')
         .get(UsersController.getARandomUser)

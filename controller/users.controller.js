@@ -30,9 +30,14 @@ module.exports.saveAUser = async (req,res)=>{
 
 module.exports.updateAUser = async (req,res)=>{
     const id = req.params.id;
-    let userFounded = users.find(user=> user.id == Number(id));
-
-    res.send(userFounded);
+    let userFound = users.find(user=> user.id == Number(id));
+    const userIndex = users.indexOf(userFound);
+    const data = req.body;
+    const updatedUser = {...userFound,...data};
+    if (userIndex > -1) {
+        users[userIndex] = updatedUser;
+    }
+    res.send(users);
 }
 
 module.exports.deleteAUser = async (req,res) =>{
