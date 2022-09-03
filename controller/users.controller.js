@@ -1,4 +1,4 @@
-const {users} = require('../users');
+const users = require('../users');
 
 module.exports.getAllUsers = async (req,res)=>{
     const {limit} = req.query;
@@ -13,10 +13,9 @@ module.exports.getARandomUser =  async (req,res)=>{
 }
 
 module.exports.saveAUser = async (req,res)=>{
-    console.log(req.body ,'postData');
     const {gender,name,contact,address,photoUrl} = req.body;
-    const id = user.length + 1 ;
-    const newData = {
+    const id = users.length + 1;
+    const newUsers = {
         "id": id,
         "gender":gender,
         "name": name,
@@ -24,6 +23,20 @@ module.exports.saveAUser = async (req,res)=>{
         "address": address,
         "photoUrl": photoUrl
     }
-    const newUsers = users.push(newData);
-    res.send(newUsers);
+    users.push(newUsers)
+   
+   res.send(users);
+}
+
+module.exports.updateAUser = async (req,res)=>{
+    const id = req.params.id;
+    let userFounded = users.find(user=> user.id == Number(id))
+    res.send('saved')
+}
+
+module.exports.deleteAUser = async (req,res) =>{
+    const id = req.params.id;
+    const deletedUser = users.find(user=> user.id == Number(id));
+    
+    res.send(deletedUser)
 }

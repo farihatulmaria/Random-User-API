@@ -11,8 +11,11 @@ router
         .get(UsersController.getARandomUser)
 router
     .route('/save')
-        .get(UsersController.saveAUser)
+        .post(UsersController.saveAUser)
 router
-    .route('/save')
-        .get(UsersController.saveAUser)
+    .route('/update/:id')
+        .patch(UsersController.updateAUser)
+router
+    .route('/delete/:id')
+        .delete(UsersController.deleteAUser)
 module.exports = router;
