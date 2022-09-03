@@ -1,4 +1,4 @@
-const allUsers = [
+let users  = [
   {
     "id": 1,
     "gender": "male",
@@ -63,6 +63,7 @@ const allUsers = [
     "address": "637 Hill Street, Winston, Connecticut, 9608",
     "photoUrl": "http://placehold.it/32x32",
   }
-]
-let users  = allUsers;
+];
+
+
 module.exports = users
