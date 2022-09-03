@@ -1,6 +1,5 @@
 const express = require('express');
 const UsersController = require('../../controller/users.controller');
-const { users } = require('../../users');
 const router = express.Router();
 
 router
@@ -10,5 +9,10 @@ router
 router
     .route('/random')
         .get(UsersController.getARandomUser)
-
+router
+    .route('/save')
+        .get(UsersController.saveAUser)
+router
+    .route('/save')
+        .get(UsersController.saveAUser)
 module.exports = router;

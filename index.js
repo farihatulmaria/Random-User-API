@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const userRouter = require('./Routes/version-1/user.route');
-const { users } = require('./users');
 const app = express();
 require('dotenv').config();
 const port = process.env.PORT || 5000;
@@ -17,7 +16,6 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/user',userRouter)
-
 
 app.all('*',(req,res)=>{
     res.send('Not Found')
