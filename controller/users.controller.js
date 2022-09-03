@@ -57,7 +57,7 @@ module.exports.updateTwoUser = async (req,res) =>{
     const updatedUser1 = {...user1,...info}; 
     const updatedUser2 = {...user2,...info};
     
-    // condition to update user to the DB
+    // condition to update user to the db
     if(user1Index > -1 && user2Index > -1){
         users[user1Index] = updatedUser1;
         users[user2Index] = updatedUser2;
